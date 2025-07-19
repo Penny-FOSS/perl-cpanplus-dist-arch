@@ -4,7 +4,7 @@
 
 pkgname='perl-cpanplus-dist-arch'
 pkgver='1.32'
-pkgrel='12'
+pkgrel='13'
 pkgdesc="CPANPLUS backend for building Archlinux pacman packages"
 arch=('any')
 license=("Artistic-2.0"

@@ -1,0 +1,12 @@
+diff -ura CPANPLUS-Dist-Arch-1.32/lib/CPANPLUS/Dist/Arch.pm CPANPLUS-Dist-Arch-1.32/lib/CPANPLUS/Dist/Arch.pm
+--- CPANPLUS-Dist-Arch-1.32/lib/CPANPLUS/Dist/Arch.pm	2015-10-05 15:51:21.000000000 -0700
++++ CPANPLUS-Dist-Arch-1.32/lib/CPANPLUS/Dist/Arch.pm	2025-11-15 14:09:25.839968428 -0800
+@@ -357,7 +357,7 @@
+ 
+     _DEBUG "Searching for file starting with $pkgfile";
+ 
+-    my ($found) = grep { -f $_ } map { "$pkgfile.$_" } qw/ xz gz bz2 /;
++    my ($found) = grep { -f $_ } map { "$pkgfile.$_" } qw/ gz bz2 xz zst lrz lzo Z lz4 lz /;
+ 
+     _DEBUG ( $found ? "Found $found" : "No package file found!" );
+ 

@@ -4,7 +4,7 @@
 
 pkgname='perl-cpanplus-dist-arch'
 pkgver='1.32'
-pkgrel='13'
+pkgrel='15'
 pkgdesc="CPANPLUS backend for building Archlinux pacman packages"
 arch=('any')
 license=("Artistic-2.0"
@@ -13,10 +13,18 @@ options=('!emptydirs')
 depends=('perl-cpanplus>=0' 'perl-pod-parser>=0')
 makedepends=()
 url='https://metacpan.org/release/CPANPLUS-Dist-Arch'
-source=('http://search.cpan.org/CPAN/authors/id/J/JN/JNBEK/CPANPLUS-Dist-Arch-1.32.tar.gz')
-md5sums=('673be0f0651e975faf4aa59536361d60')
-sha512sums=('92aa6214c56b73c5ce48998a9cc86d619ac3e8c01c1cd3445a99fc9dbc4740923f0cc7708f7270dbc1e930cc783366f98833a8ae58a62f225b614d626c79665d')
+source=('http://search.cpan.org/CPAN/authors/id/J/JN/JNBEK/CPANPLUS-Dist-Arch-1.32.tar.gz'
+        '001-support-more-archive-formats.patch')
+md5sums=('673be0f0651e975faf4aa59536361d60'
+         '1038ad32bc7b75c68f4bb7bba41c71fa')
+sha512sums=('92aa6214c56b73c5ce48998a9cc86d619ac3e8c01c1cd3445a99fc9dbc4740923f0cc7708f7270dbc1e930cc783366f98833a8ae58a62f225b614d626c79665d'
+            'c3ad13c3957cc8f7d67e4d3b6ba713ee542ef550bde9b3eec33b13d9f6730d083364a176fa267f10af043d8dedf2cfee6cda680152d3defdf4731a4f0dfb6394')
 _distdir="CPANPLUS-Dist-Arch-1.32"
+
+prepare() {
+  cd "$srcdir/$_distdir"
+  patch -Np1 -i ../"${source[*]:1:1}"
+}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
